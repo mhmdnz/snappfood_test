@@ -15,7 +15,7 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->enum('priority', [1, 2, 3]);
             $table->enum('state', ['on_call', 'waited'])->default('waited');
             $table->timestamps();

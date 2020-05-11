@@ -16,8 +16,10 @@ class CreateAnswerLogsTable extends Migration
         Schema::create('answer_logs', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id')->unsigned();
-            $table->integer('incoming_call_id')->unsigned();
+            $table->integer('incoming_call_id')->unsigned()->unique();
+            $table->dateTime('end_call_time')->nullable();
             $table->timestamps();
+            $table->unique(array('employee_id', 'incoming_call_id'));
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('incoming_call_id')->references('id')->on('incoming_calls');
         });

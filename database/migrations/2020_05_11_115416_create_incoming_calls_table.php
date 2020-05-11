@@ -17,7 +17,9 @@ class CreateIncomingCallsTable extends Migration
             $table->increments('id');
             $table->string('call_id');
             $table->enum('type', ['immediate', 'normal'])->default('normal');
+            $table->boolean('is_taken')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
