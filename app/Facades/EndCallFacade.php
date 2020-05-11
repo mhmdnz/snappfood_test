@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Helper;
+namespace App\Facades;
 
 
 use App\Models\AnswerLog;

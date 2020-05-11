@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Helper;
+namespace App\Facades;
 
 
 use App\Models\AnswerLog;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class AnswerLogHelper
 {
-    public static function save(IncomingCall $incomingCall, Employee $employee)
+    public function save(IncomingCall $incomingCall, Employee $employee)
     {
         $result = DB::transaction(function () use ($employee, $incomingCall) {
             resolve(AnswerLog::class)->make($employee, $incomingCall);
