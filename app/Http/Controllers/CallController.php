@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\AnswerLogHelper;
-use App\Helper\EndCallHelper;
+use Facades\App\Facades\AnswerLogHelper;
+use App\Facades\EndCallFacade;
 use App\Jobs\FindFirstEmployeeJob;
 use App\Models\AnswerLog;
 use App\Models\Employee;
@@ -40,7 +40,7 @@ class CallController extends Controller
         if ($incomingCall->answerLog->end_call_time) {
             return response(['message' => 'This Call Is Ended Already']);
         }
-        if (EndCallHelper::endCall($incomingCall))
+        if (EndCallFacade::endCall($incomingCall))
             return response(['Call Ended']);
 
         return response(['message' => 'Something Is Wrong'], 500);

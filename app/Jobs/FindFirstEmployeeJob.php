@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Helper\AnswerLogHelper;
+use Facades\App\Helper\AnswerLogHelper;
 use App\Models\Employee;
 use App\Models\IncomingCall;
 use Illuminate\Bus\Queueable;

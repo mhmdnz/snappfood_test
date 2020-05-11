@@ -9,7 +9,7 @@ use App\Models\Employee;
 use App\Models\IncomingCall;
 use Illuminate\Support\Facades\DB;
 
-class AnswerLogHelper
+class AnswerLogFacade
 {
     public function save(IncomingCall $incomingCall, Employee $employee)
     {

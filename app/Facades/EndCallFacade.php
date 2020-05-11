@@ -9,7 +9,7 @@ use App\Models\Employee;
 use App\Models\IncomingCall;
 use Illuminate\Support\Facades\DB;
 
-class EndCallHelper
+class EndCallFacade
 {
     public static function endCall(IncomingCall $incomingCall)
     {
