@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use Facades\App\Helper\AnswerLogHelper;
+use Facades\App\Facades\AnswerLogFacade;
 use App\Models\Employee;
 use App\Models\IncomingCall;
 use Illuminate\Bus\Queueable;
@@ -33,7 +33,7 @@ class FindFirstEmployeeJob implements ShouldQueue
     {
         $waited_employee = Employee::getFirstWaited();
         if ($waited_employee)
-            AnswerLogHelper::save($this->incomingCall, $waited_employee);
+            AnswerLogFacade::save($this->incomingCall, $waited_employee);
 
         throw new \Exception('waited for new User');
     }
