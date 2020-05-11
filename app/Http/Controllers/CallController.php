@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Facades\App\Facades\AnswerLogHelper;
+use Facades\App\Facades\AnswerLogFacade;
 use App\Facades\EndCallFacade;
 use App\Jobs\FindFirstEmployeeJob;
 use App\Models\AnswerLog;
@@ -63,7 +63,7 @@ class CallController extends Controller
         $waited_employee = Employee::getFirstWaited();
         $result = '-';
         if ($waited_employee) {
-            $result = AnswerLogHelper::save($incoming_call, $waited_employee) == true ? $waited_employee->name: '-';
+            $result = AnswerLogFacade::save($incoming_call, $waited_employee) == true ? $waited_employee->name: '-';
         } else {
             FindFirstEmployeeJob::dispatch($incoming_call);
         }
@@ -73,6 +73,6 @@ class CallController extends Controller
 
     private function handleNormalCalls(Employee $employee, $normal_call)
     {
-        return AnswerLogHelper::save($normal_call, $employee) == true ? $employee->name: '-';
+        return AnswerLogFacade::save($normal_call, $employee) == true ? $employee->name: '-';
     }
 }
