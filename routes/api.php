@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/employee/{employee}', 'EmployeeController@get');
+Route::post('/employee', 'EmployeeController@create');
+
+
+Route::post('/call/start', 'CallController@start');
+Route::post('/call/end', 'CallController@end');
+Route::get('/call/answer/{employee}', 'CallController@answer');
+
