@@ -37,7 +37,7 @@ class CallController extends Controller
             'call_id' => 'required|exists:incoming_calls,call_id'
         ]);
         $incomingCall = IncomingCall::getByCallId($request->call_id);
-        if ($incomingCall->answerLog->end_call_time) {
+        if ($incomingCall->answerLog && $incomingCall->answerLog->end_call_time) {
             return response(['message' => 'This Call Is Ended Already']);
         }
         if (EndCallFacade::endCall($incomingCall))
